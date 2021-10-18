@@ -1,6 +1,6 @@
 #include "str_easy.h"
 
-string itc_cmp_str(string str1, string str2, int num) { // 11
+string itc_cmp_str(string str1, string str2, int num) {
     string text = "";
     text += itc_slice_str(str1, 1, num);
     text += itc_slice_str(str2, 1, itc_len(str2));
