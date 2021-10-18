@@ -2,10 +2,12 @@
 
 string itc_even_place(string str)
 {
+    if (itc_len(str) <= 1)
+        return "-1";
     int num1 = 0;
     string res_str = "";
     while (num1 <= itc_len(str)) {
-        if (num1 % 2 == 0)
+        if (num1 % 2 == 1)
             res_str += str[num1];
         num1++;
     }
@@ -14,8 +16,8 @@ string itc_even_place(string str)
 
 double itc_percent_lower_uppercase(string str)
 {
-    int count_upper = 0;
-    int count_lower = 0;
+    double count_upper = 0;
+    double count_lower = 0;
     for (int i = 0; i < itc_len(str); i++) {
         if (str[i] >= 'A' && str[i] <= 'Z')
             count_upper++;
