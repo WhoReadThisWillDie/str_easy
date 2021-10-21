@@ -1,11 +1,18 @@
 #include "str_easy.h"
 
 string itc_cmp_str(string str1, string str2, int num) {
-    string text = "";
-    text += itc_slice_str(str1, 1, num);
-    text += itc_slice_str(str2, 1, itc_len(str2));
-    text += itc_slice_str(str1, num + 1, itc_len(str1));
-    return text;
+    string res_str = "";
+    for (int i = 0; i < num; i++) {
+        res_str += str1[i];
+    }
+    for (int i = 0; i < itc_len(str2); i++) {
+        res_str += str2[i];
+    }
+    int num1 = itc_len(res_str);
+    for (int i = num1; i < itc_len(str1); i++) {
+        res_str += str1[i];
+    }
+    return res_str;
 }
 
 int itc_find_str(string str1, string str2)
@@ -33,19 +40,23 @@ int itc_find_str(string str1, string str2)
 string itc_three_str(string str1, string str2, string str3)
 {
     string res_str = "";
-    string res1_str = "";
+    string res_str1 = "";
     if (itc_find_str(str1, str2) == -1) {
         return str1;
     }
     while (itc_find_str(str1, str2) != -1) {
-        res_str += itc_slice_str(str1, 0, itc_find_str(str1, str2) - 1);
-        res_str += str3;
-        res_str += itc_slice_str(str1, itc_find_str(str1, str2) + itc_len(str2), itc_len(str1));
-        str1 = res_str;
-        res1_str = res_str;
+        int num = itc_find_str(str1, str2);
+        for (int i = 0; i < num; i++) {
+            res_str += str1[i];
+        }
+        for (int i = itc_len(str2) + num; i <= itc_len(str1); i++) {
+            res_str1 += str1[i];
+        }
+        str1 = res_str + str3 + res_str1;
         res_str = "";
+        res_str1 = "";
     }
-    return res1_str;
+    return str1;
 }
 
 int itc_max_char_on_end(string str)
@@ -60,7 +71,7 @@ int itc_max_char_on_end(string str)
             num_count = 0;
         }
         if (num_count > res_num)
-                res_num = num_count;
+            res_num = num_count;
     }
     return res_num;
 }

@@ -2,12 +2,12 @@
 
 string itc_even_place(string str)
 {
+    int num1 = 0;
     if (itc_len(str) <= 1)
         return "-1";
-    int num1 = 0;
     string res_str = "";
     while (num1 <= itc_len(str)) {
-        if (num1 % 2 == 1)
+        if ((num1 + 1) % 2 == 0)
             res_str += str[num1];
         num1++;
     }
@@ -19,14 +19,14 @@ double itc_percent_lower_uppercase(string str)
     double count_upper = 0;
     double count_lower = 0;
     for (int i = 0; i < itc_len(str); i++) {
-        if (str[i] >= 'A' && str[i] <= 'Z')
+        if (str[i] >= 65 && str[i] <= 90)
             count_upper++;
-        else if (str[i] >= 'a' && str[i] <= 'z')
+        else if (str[i] >= 97 && str[i] <= 122)
             count_lower++;
     }
     if (count_lower == 0)
         return -1;
-    return (count_upper / count_lower) * 100;
+    return count_upper / count_lower;
 }
 
 string itc_reverse_str(string str)
@@ -45,12 +45,12 @@ string itc_slice_str(string str, int start, int end)
         return str;
     }
     if (end <= itc_len(str)) {
-        for (int i = start - 1; i < end; i++) {
+        for (int i = start; i <= end; i++) {
             res_str += str[i];
         }
     }
     else {
-        for (int i = start - 1; i <= itc_len(str) + 1; i++) {
+        for (int i = start; i < itc_len(str); i++) {
             res_str += str[i];
         }
     }
