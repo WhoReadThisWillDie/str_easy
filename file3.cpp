@@ -10,11 +10,12 @@ string itc_cmp_str(string str1, string str2, int num) {
         res_str += str1[i];
     }
     for (int i = 0; i < itc_len(str2); i++) {
-        res_str += str2[i];
+        if (itc_len(res_str) < itc_len(str1))
+            res_str += str2[i];
     }
-    int num1 = itc_len(res_str);
-    for (int i = num1; i < itc_len(str1); i++) {
-        res_str += str1[i];
+    for (int i = num; i < itc_len(str1); i++) {
+        if (itc_len(res_str) < itc_len(str1))
+            res_str += str1[i];
     }
     return res_str;
 }
