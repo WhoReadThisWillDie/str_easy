@@ -2,6 +2,10 @@
 
 string itc_cmp_str(string str1, string str2, int num) {
     string res_str = "";
+    if (num < 0)
+        return "";
+    if (itc_len(str1) < num + 1)
+        return str1;
     for (int i = 0; i < num; i++) {
         res_str += str1[i];
     }

@@ -24,9 +24,7 @@ double itc_percent_lower_uppercase(string str)
         else if (str[i] >= 97 && str[i] <= 122)
             count_lower++;
     }
-    if (count_lower == 0)
-        return -1;
-    return count_upper / count_lower;
+    return count_lower / count_upper;
 }
 
 string itc_reverse_str(string str)
